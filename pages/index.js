@@ -1,8 +1,11 @@
 import Head from "next/head";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
+import Results from "../components/Results";
+import requests from "../utils/requests";
 
-export default function Home() {
+// props from getServerSideProps()
+export default function Home({ results }) {
   return (
     <div>
       <Head>
@@ -11,6 +14,26 @@ export default function Home() {
       </Head>
       <Header />
       <Nav />
+      <Results results={results} />
     </div>
   );
+}
+
+// Define server-side rendered pages
+// Note: This function gets rendered on the server and Home()
+// gets rendered on the client. E.g. server first, then gets
+// delivered to the client
+export async function getServerSideProps(context) {
+  const genre = context.query.genre;
+  const request = await fetch(
+    `https://api.themoviedb.org/3${
+      requests[genre]?.url || requests.fetchTrending.url
+    }`
+  ).then((res) => res.json());
+
+  return {
+    props: {
+      results: request.results,
+    },
+  };
 }
