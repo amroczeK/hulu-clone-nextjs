@@ -38,11 +38,11 @@ export default {
     url: `/discover/movie?api_key=${API_KEY}&with_genres=37`,
   },
   fetchAnimationMovies: {
-    title: "Comedy",
+    title: "Animation",
     url: `/discover/movie?api_key=${API_KEY}&with_genres=16`,
   },
   fetchTV: {
-    title: "Comedy",
+    title: "TV Movie",
     url: `/discover/movie?api_key=${API_KEY}&with_genres=10770`,
   },
 };

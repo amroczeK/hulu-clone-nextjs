@@ -9,8 +9,8 @@ export default function Home() {
         <title>Hulu Clone</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Nav />
       <Header />
+      <Nav />
     </div>
   );
 }
